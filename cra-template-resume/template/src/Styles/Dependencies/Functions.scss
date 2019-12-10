@@ -1,0 +1,106 @@
+////////////////////////
+//      REM CALC      //
+////////////////////////
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $rem-base)  {
+	$value: strip-unit($value) / strip-unit($base-value) * 1rem;
+	@if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+	@return $value;
+}
+
+@function rem($values, $base-value: $rem-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $remValues: ();
+
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+
+  @return $remValues;
+}
+
+////////////////////////
+//      Flexbox       //
+////////////////////////
+@mixin flexContainer($centerContent:false, $wrapContent:true, $inlineFlex:false, $direction: 'row') {
+  display   : flex;
+  flex-wrap : nowrap;
+
+  @if $inlineFlex == true {
+    display : inline-flex;
+  }
+
+  @if $wrapContent == true {
+    flex-wrap : wrap;
+  }
+
+  @if $direction == 'column' {
+    flex-direction: column;
+  }
+
+  @if $centerContent == true {
+    justify-content : center;
+    align-items     : center;
+    align-content   : center;
+  }
+}
+
+@mixin flexItem($flexGrow:1, $flexShrink:0, $flexBasis:auto, $flexSelf:auto) {
+flex       : $flexGrow $flexShrink $flexBasis;
+align-self : $flexSelf;
+}
+
+////////////////////////
+//       ARROW        //
+////////////////////////
+@mixin arrow($arrowDirection: 'up', $arrowWidth: 16, $arrowHeight: 10, $color: $white, $positioned: false) {
+  $halfArrowWidth: strip-unit($arrowWidth) / 2 + px;
+  $arrowWidth: strip-unit($arrowWidth) + px;
+  $arrowHeight: strip-unit($arrowHeight) + px;
+
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if $arrowDirection == 'up' or $arrowDirection == 'top' {
+    border-width: 0 $halfArrowWidth $arrowHeight $halfArrowWidth;
+    border-color: transparent transparent $color transparent;
+    @if $positioned == true {
+      top: -$arrowHeight;
+      left: 50%;
+      margin-left: calc(-#{$arrowWidth} / 2);
+    }
+  } @else if $arrowDirection == 'right' {
+    border-width: $halfArrowWidth 0 $halfArrowWidth $arrowHeight;
+    border-color: transparent transparent transparent $color;
+    @if $positioned == true {
+      right: -$arrowHeight;
+      top: 50%;
+      margin-top: calc(-#{$arrowWidth} / 2);
+    }
+  } @else if $arrowDirection == 'down' or $arrowDirection == 'bottom' {
+    border-width: $arrowHeight $halfArrowWidth 0 $halfArrowWidth;
+    border-color: $color transparent transparent transparent;
+    @if $positioned == true {
+      bottom: -$arrowHeight;
+      left: 50%;
+      margin-left: calc(-#{$arrowWidth} / 2);
+    }
+  } @else if $arrowDirection == 'left' {
+    border-width: $halfArrowWidth $arrowHeight $halfArrowWidth 0;
+    border-color: transparent $color transparent transparent;
+    @if $positioned == true {
+      left: -$arrowHeight;
+      top: 50%;
+      margin-top: calc(-#{$arrowWidth} / 2);
+    }
+  }
+}

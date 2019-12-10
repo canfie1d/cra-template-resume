@@ -1,0 +1,158 @@
+h1, h2, h3, h4, h5, h6 {
+	color: #313131;
+ font-family: 'opensans-bold', sans-serif;
+	font-weight: normal;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+h1 { font-size: 38px; line-height: 42px; margin-bottom: 12px; letter-spacing: -1px; }
+h2 { font-size: 28px; line-height: 36px; margin-bottom: 6px; }
+h3 { font-size: 22px; line-height: 30px; margin-bottom: 12px; }
+h4 { font-size: 20px; line-height: 30px; margin-bottom: 6px; }
+h5 { font-size: 18px; line-height: 30px; }
+h6 { font-size: 14px; line-height: 30px; }
+// .subheader { }
+
+p { margin: 0 0 30px 0; }
+p img { margin: 0; }
+p.lead {
+	font: 19px/36px 'opensans-light', sans-serif;
+	margin-bottom: 18px;
+}
+
+/* for 'em' and 'strong' tags, font-size and line-height should be same with
+the body tag due to rendering problems in some browsers */
+em { font: 15px/30px 'opensans-italic', sans-serif; }
+strong, b { font: 15px/30px 'opensans-bold', sans-serif; }
+small { font-size: 11px; line-height: inherit; }
+
+/*	Blockquotes */
+blockquote {
+	margin: 30px 0px;
+	padding-left: 40px;
+	position: relative;
+}
+blockquote:before {
+	content: "\201C";
+	opacity: 0.45;
+	font-size: 80px;
+	line-height: 0px;
+	margin: 0;
+	font-family: arial, sans-serif;
+
+	position: absolute;
+	top:  30px;
+ left: 0;
+}
+blockquote p {
+	font-family: 'librebaskerville-italic', serif;
+	padding: 0;
+	font-size: 18px;
+	line-height: 36px;
+}
+blockquote cite {
+	display: block;
+	font-size: 12px;
+	font-style: normal;
+	line-height: 18px;
+}
+blockquote cite:before { content: "\2014 \0020"; }
+blockquote cite a,
+blockquote cite a:visited { color: #8B9798; border: none }
+
+/* ---------------------------------------------------------------------
+/*  Pull Quotes Markup
+/*
+	 <aside class="pull-quote">
+	 <blockquote>
+		 <p></p>
+	 </blockquote>
+	</aside>
+/*
+/* --------------------------------------------------------------------- */
+.pull-quote {
+	position: relative;
+ padding: 18px 30px 18px 0px;
+}
+.pull-quote:before,
+.pull-quote:after {
+ height: 1em;
+ opacity: 0.45;
+ position: absolute;
+ font-size: 80px;
+	font-family: Arial, Sans-Serif;
+}
+.pull-quote:before {
+ content: "\201C";
+ top:  33px;
+ left: 0;
+}
+.pull-quote:after {
+ content: '\201D';
+ bottom: -33px;
+ right: 0;
+}
+.pull-quote blockquote {
+	margin: 0;
+}
+.pull-quote blockquote:before {
+	content: none;
+}
+
+/* Abbreviations */
+abbr {
+	font-family: 'opensans-bold', sans-serif;
+ font-variant: small-caps;
+ text-transform: lowercase;
+	letter-spacing: .5px;
+ color: gray;
+}
+abbr:hover { cursor: help; }
+
+/* drop cap */
+.drop-cap:first-letter {
+ float: left;
+ margin: 0;
+ padding: 14px 6px 0 0;
+ font-size: 84px;
+ font-family: /* Copperplate */ 'opensans-bold', sans-serif;
+	line-height: 60px;
+ text-indent: 0;
+ background: transparent;
+ color: inherit;
+}
+
+hr { border: solid #E3E3E3; border-width: 1px 0 0; clear: both; margin: 11px 0 30px; height: 0; }
+
+
+/*  3. Links  ------------------------------------------------------- */
+
+a, a:visited {
+	text-decoration: none;
+	outline: 0;
+	color: #11ABB0;
+
+	-webkit-transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-o-transition: color .3s ease-in-out;
+	transition: color .3s ease-in-out;
+}
+a:hover, a:focus { color: #313131; }
+p a, p a:visited { line-height: inherit; }
+
+
+/*  4. List  --------------------------------------------------------- */
+
+ul, ol { margin-bottom: 24px; margin-top: 12px; }
+ul { list-style: none outside; }
+ol { list-style: decimal; }
+ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
+ul.square { list-style: square outside; }
+ul.circle { list-style: circle outside; }
+ul.disc { list-style: disc outside; }
+ul ul, ul ol,
+ol ol, ol ul { margin: 6px 0 6px 30px; }
+ul ul li, ul ol li,
+ol ol li, ol ul li { margin-bottom: 6px; }
+li { line-height: 18px; margin-bottom: 12px; }
+// ul.large li { }
+// li p { }

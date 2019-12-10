@@ -1,0 +1,38 @@
+html {
+  font-size: $rem-base;
+  // font-size: 62.5%;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background: #fff;
+  font-family: 'opensans-regular', sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 30px;
+  color: #838C95;
+
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+.app {
+  height: 100vh;
+}
+
+.app__container {
+  height: inherit;
+}
