@@ -7,7 +7,7 @@ const Portfolio = () => {
   const renderProjects = () => {
     if (data.portfolio && data.portfolio.projects) {
       return data.portfolio.projects.map(projects => {
-        var projectImage = 'images/portfolio/' + projects.image;
+        var projectImage = '../Assets/images/portfolio/' + projects.image;
 
         return (
           <div key={projects.title} className="columns portfolio-item">
