@@ -1,8 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 
-const Footer = props => {
-  if (props.data) {
-    var networks= props.data.social.map(function(network){
+const Footer = () => {
+  const data = useSelector(state => state.resumeData);
+
+  renderNetworks = () => {
+    return data.social.map(function(network) {
       return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
     })
   }
@@ -12,7 +15,7 @@ const Footer = props => {
       <div className="row">
         <div className="twelve columns">
           <ul className="social-links">
-            {networks}
+            {renderNetworks()}
           </ul>
           <ul className="copyright">
               <li>&copy; Copyright 2017 Tim Baker</li>

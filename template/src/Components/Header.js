@@ -1,15 +1,18 @@
 import React from 'react';
 
-const Header = props => {
-  if (props.data) {
-    var name = props.data.name;
-    var occupation= props.data.occupation;
-    var description= props.data.description;
-    var city= props.data.address.city;
-    var networks= props.data.social.map(function(network) {
-      return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
-    })
-  }
+const Header = () => {
+  const data = useSelector(state => state.resumeData);
+
+  var name = data.name;
+  var occupation= data.occupation;
+  var description= data.description;
+  var city= data.address.city;
+
+  renderNetworks = () => {
+    return data.social.map(network => {
+      return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>;
+    });
+  };
 
   return (
     <header id="home">
@@ -31,7 +34,7 @@ const Header = props => {
           <h3>I'm a {city} based <span>{occupation}</span>. {description}.</h3>
           <hr />
           <ul className="social">
-            {networks}
+            {renderNetworks()}
           </ul>
         </div>
       </div>

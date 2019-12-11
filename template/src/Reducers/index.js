@@ -1,14 +1,11 @@
 import { combineReducers } from 'redux';
 
-function number(state = { value: 0 }, action) {
+function resumeData(state = { data: {} }, action) {
   const newState = Object.assign({}, state);
 
   switch (action.type) {
-    case 'ADD_NUMBER':
-      newState.value++;
-      break;
-    case 'SUBTRACT_NUMBER':
-      --newState.value;
+    case 'UPDATE_DATA':
+      newState.data = action.data;
       break;
     default:
       return state;
@@ -18,5 +15,5 @@ function number(state = { value: 0 }, action) {
 }
 
 export default combineReducers({
-  number,
+  resumeData,
 });

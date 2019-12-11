@@ -1,13 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 
-const Testimonials = props => {
-  if (props.data) {
-    var testimonials = props.data.testimonials.map(function(testimonials){
+const Testimonials = () => {
+  const data = useSelector(state => state.resumeData);
+
+  renderTestimonials = () => {
+    return data.testimonials.map(testimonial => {
       return (
-        <li key={testimonials.user}>
+        <li key={testimonial.user}>
           <blockquote>
-              <p>{testimonials.text}</p>
-              <cite>{testimonials.user}</cite>
+            <p>{testimonial.text}</p>
+            <cite>{testimonial.user}</cite>
           </blockquote>
         </li>
       );
@@ -23,7 +26,7 @@ const Testimonials = props => {
           </div>
           <div className="ten columns flex-container">
             <ul className="slides">
-              {testimonials}
+              {renderTestimonials()}
             </ul>
           </div>
         </div>

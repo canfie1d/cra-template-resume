@@ -1,16 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 
-const Contact = props => {
-  if (props.data) {
-    var name = props.data.name;
-    var street = props.data.address.street;
-    var city = props.data.address.city;
-    var state = props.data.address.state;
-    var zip = props.data.address.zip;
-    var phone= props.data.phone;
-    var email = props.data.email;
-    var message = props.data.contactmessage;
-  }
+const Contact = () => {
+  const data = useSelector(state => state.resumeData);
+
+  var name = data.name;
+  var street = data.address.street;
+  var city = data.address.city;
+  var state = data.address.state;
+  var zip = data.address.zip;
+  var phone= data.phone;
+  // var email = data.email;
+  var message = data.contactmessage;
 
   return (
     <section id="contact">
@@ -28,15 +29,15 @@ const Contact = props => {
             <fieldset>
               <div>
                 <label htmlFor="contactName">Name <span className="required">*</span></label>
-                <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={handleChange}/>
+                <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={handleChange} />
               </div>
               <div>
                 <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-                <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={handleChange}/>
+                <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={handleChange} />
               </div>
               <div>
                 <label htmlFor="contactSubject">Subject</label>
-                <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={handleChange}/>
+                <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={handleChange} />
               </div>
               <div>
                 <label htmlFor="contactMessage">Message <span className="required">*</span></label>
@@ -65,7 +66,7 @@ const Contact = props => {
             <span>{phone}</span>
           </p>
         </div>
-        <div className="widget widget_tweets">
+        {/* <div className="widget widget_tweets">
           <h4 className="widget-title">Latest Tweets</h4>
             <ul id="twitter">
               <li>
@@ -85,7 +86,7 @@ const Contact = props => {
                 <b><a href="#">3 Days Ago</a></b>
               </li>
             </ul>
-          </div>
+          </div> */}
         </aside>
       </div>
     </section>
