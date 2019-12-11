@@ -1,15 +1,17 @@
-html {
-  font-size: $rem-base;
-  // font-size: 62.5%;
+*,
+*:before,
+*:after {
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
 }
 
-html,
-body {
-  width: 100%;
-  min-height: 100%;
+html {
+  font-size: 62.5%;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+}
+
+body {
   background: #fff;
   font-family: 'opensans-regular', sans-serif;
   font-weight: normal;
@@ -17,16 +19,8 @@ body {
   line-height: 30px;
   color: #838C95;
 
+  -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
   -webkit-text-size-adjust: 100%;
-}
-
-* {
-  box-sizing: border-box;
-
-  &:before,
-  &:after {
-    box-sizing: inherit;
-  }
 }
 
 .app {

@@ -1,10 +1,13 @@
 import React from 'react';
-import updateResumeData from './Actions/Data';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateResumeData } from './Actions/Data';
+import { resumeData } from './resumeData';
 import './App.scss';
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.updateResumeData('./resumeData.json');
+    this.props.updateResumeData(resumeData);
   }
 
   render() {
@@ -16,7 +19,7 @@ class App extends React.Component {
   }
 }
 
-mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     updateResumeData
   }, dispatch)

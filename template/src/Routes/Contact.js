@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 
 const Contact = () => {
-  const data = useSelector(state => state.resumeData);
+  const data = useSelector(state => state.resumeData.data);
 
-  var name = data.name;
-  var street = data.address.street;
-  var city = data.address.city;
-  var state = data.address.state;
-  var zip = data.address.zip;
-  var phone= data.phone;
-  // var email = data.email;
-  var message = data.contactmessage;
+  const initialState = {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  };
+
+  const [inputValues, setInputValues] = useState(initialState);
+
+  var address = (data.main && data.main.address) || {street: '', city: '', state: '', zip: ''};
+
+  const handleChange = e => {
+    const input = e.target.id;
+    const value = e.target.value;
+
+    const newInputVals = {...inputValues, ...{[input]: value}}
+
+    setInputValues(newInputVals)
+  }
 
   return (
     <section id="contact">
@@ -20,7 +31,7 @@ const Contact = () => {
           <h1><span>Get In Touch.</span></h1>
         </div>
         <div className="ten columns">
-          <p className="lead">{message}</p>
+          <p className="lead">{data.contactmessage}</p>
         </div>
       </div>
       <div className="row">
@@ -28,30 +39,30 @@ const Contact = () => {
           <form action="" method="post" id="contactForm" name="contactForm">
             <fieldset>
               <div>
-                <label htmlFor="contactName">Name <span className="required">*</span></label>
-                <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={handleChange} />
+                <label htmlFor="name">Name <span className="required">*</span></label>
+                <input type="text" size="35" id="name" name="contactName" onChange={e => handleChange(e)} />
               </div>
               <div>
-                <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-                <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={handleChange} />
+                <label htmlFor="email">Email <span className="required">*</span></label>
+                <input type="text" size="35" id="email" name="contactEmail" onChange={e => handleChange(e)} />
               </div>
               <div>
-                <label htmlFor="contactSubject">Subject</label>
-                <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={handleChange} />
+                <label htmlFor="subject">Subject</label>
+                <input type="text" size="35" id="subject" name="contactSubject" onChange={e => handleChange(e)} />
               </div>
               <div>
-                <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                <label htmlFor="message">Message <span className="required">*</span></label>
+                <textarea cols="50" rows="15" id="message" name="contactMessage" onChange={e => handleChange(e)}></textarea>
               </div>
               <div>
-                <button className="submit">Submit</button>
+                <button type='submit' className="submit">Submit</button>
                 <span id="image-loader">
                   <img alt="" src="images/loader.gif" />
                 </span>
               </div>
             </fieldset>
           </form>
-          <div id="message-warning"> Error boy</div>
+          <div id="message-warning">Error</div>
           <div id="message-success">
             <i className="fa fa-check"></i>Your message was sent, thank you!<br />
           </div>
@@ -60,10 +71,10 @@ const Contact = () => {
           <div className="widget widget_contact">
           <h4>Address and Phone</h4>
           <p className="address">
-            {name}<br />
-            {street} <br />
-            {city}, {state} {zip}<br />
-            <span>{phone}</span>
+            {data.name}<br />
+            {address.street} <br />
+            {address.city}, {address.state} {address.zip}<br />
+            <span>{data.phone}</span>
           </p>
         </div>
         {/* <div className="widget widget_tweets">

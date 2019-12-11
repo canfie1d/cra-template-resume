@@ -1,16 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const data = useSelector(state => state.resumeData.data);
-  var name = (data.main && data.main.name) || '';
-  var occupation = (data.main && data.main.occupation) || '';
-  var description = (data.main && data.main.description) || '';
-  var address = (data.main && data.main.address) || {city: ''};
+
+  var name = data.name;
+  var occupation= data.occupation;
+  var description= data.description;
+  var address = data.address;
 
   const renderNetworks = () => {
-    if (data.main && data.main.social) {
-      return data.main.social.map(network => {
+    if (data.social) {
+      return data.social.map(network => {
         return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>;
       });
     }
@@ -23,11 +25,11 @@ const Header = () => {
         <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
         <ul id="nav" className="nav">
           <li className="current"><a className="smoothscroll" href="#home">Home</a></li>
-          <li><a className="smoothscroll" href="#about">About</a></li>
-          <li><a className="smoothscroll" href="#resume">Resume</a></li>
-          <li><a className="smoothscroll" href="#portfolio">Works</a></li>
-          <li><a className="smoothscroll" href="#testimonials">Testimonials</a></li>
-          <li><a className="smoothscroll" href="#contact">Contact</a></li>
+          <li><NavLink className="smoothscroll" to="/about">About</NavLink></li>
+          <li><NavLink className="smoothscroll" to="/resume">Resume</NavLink></li>
+          <li><NavLink className="smoothscroll" to="/portfolio">Works</NavLink></li>
+          <li><NavLink className="smoothscroll" to="/testimonials">Testimonials</NavLink></li>
+          <li><NavLink className="smoothscroll" to="/contact">Contact</NavLink></li>
         </ul>
       </nav>
         <div className="row banner">

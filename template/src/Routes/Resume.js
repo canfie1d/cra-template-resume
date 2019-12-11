@@ -2,38 +2,44 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 
 const Resume = () => {
-  const data = useSelector(state => state.resumeData);
+  const data = useSelector(state => state.resumeData.data);
 
-  renderEducation = () => {
-    return data.education.map(education => {
-      return (
-        <div key={education.school}><h3>{education.school}</h3>
-        <p className="info">{education.degree} <span>&bull;</span><em className="date">{education.graduated}</em></p>
-        <p>{education.description}</p></div>
-      );
-    })
+  const renderEducation = () => {
+    if (data.resume && data.resume.education) {
+      return data.resume.education.map(education => {
+        return (
+          <div key={education.school}><h3>{education.school}</h3>
+          <p className="info">{education.degree} <span>&bull;</span><em className="date">{education.graduated}</em></p>
+          <p>{education.description}</p></div>
+        );
+      })
+    }
   }
 
-  renderWork = () => {
-    return data.work.map(work => {
-      return (
-        <div key={work.company}><h3>{work.company}</h3>
-          <p className="info">{work.title}<span>&bull;</span> <em className="date">{work.years}</em></p>
-          <p>{work.description}</p>
-        </div>
-      );
-    })
+  const renderWork = () => {
+    if (data.resume && data.resume.work) {
+      return data.resume.work.map(work => {
+        return (
+          <div key={work.company}><h3>{work.company}</h3>
+            <p className="info">{work.title}<span>&bull;</span> <em className="date">{work.years}</em></p>
+            <p>{work.description}</p>
+          </div>
+        );
+      })
+    }
   }
 
-  renderSkills = () => {
-    return data.skills.map(skills => {
-      var className = 'bar-expand ' + skills.name.toLowerCase();
-      return (
-        <li key={skills.name}>
-          <span style={{width:skills.level}}className={className}></span><em>{skills.name}</em>
-        </li>
-      );
-    })
+  const renderSkills = () => {
+    if (data.resume && data.resume.skills) {
+      return data.resume.skills.map(skill => {
+        var className = 'bar-expand ' + skill.name.toLowerCase();
+        return (
+          <li key={skill.name}>
+            <span style={{width:skill.level}}className={className}></span><em>{skill.name}</em>
+          </li>
+        );
+      })
+    }
   }
 
   return (

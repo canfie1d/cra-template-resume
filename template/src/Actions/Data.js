@@ -1,16 +1,5 @@
-export function updateResumeData(url) {
+export function updateResumeData(data) {
   return dispatch => {
-    $.ajax({
-      url: url,
-      dataType:'json',
-      cache: false,
-      success: function(data) {
-        dispatch({ type: 'UPDATE_DATA', data });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-        alert(err);
-      }
-    });
+    dispatch({ type: 'UPDATE_DATA', data });
   }
 }

@@ -2,18 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 
 const About = () => {
-  const data = useSelector(state => state.resumeData);
+  const data = useSelector(state => state.resumeData.data);
 
-  var name = data.name;
-  var profilepic= `./Assets/images/${data.image}`;
-  var bio = data.bio;
-  var street = data.address.street;
-  var city = data.address.city;
-  var state = data.address.state;
-  var zip = data.address.zip;
-  var phone= data.phone;
-  var email = data.email;
-  var resumeDownload = data.resumedownload;
+  var name = (data.main && data.main.name) || '';
+  var profilepic= (data.main && `./Assets/images/${data.main.image}`) || '';
+  var bio = (data.main && data.main.bio) || '';
+  var address = (data.main && data.main.address) || {};
+  var phone= (data.main && data.main.phone) || '';
+  var email = (data.main && data.main.email) || '';
+  var resumeDownload = (data.main && data.main.resumedownload) || '';
 
   return (
     <section id="about">
@@ -29,8 +26,8 @@ const About = () => {
               <h2>Contact Details</h2>
               <p className="address">
                 <span>{name}</span><br />
-                <span>{street}<br />
-                  {city} {state}, {zip}
+                <span>{address.street}<br />
+                  {address.city} {address.state}, {address.zip}
                 </span><br />
                 <span>{phone}</span><br />
                 <span>{email}</span>

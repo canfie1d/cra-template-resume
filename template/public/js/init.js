@@ -3,7 +3,7 @@
 /* Init JS
 /*
 -----------------------------------------------------------------------------------*/
- export default init = () => {
+window.jQuery(document).ready(function($) {
 /*----------------------------------------------------*/
 /* FitText Settings
 ------------------------------------------------------ */
@@ -143,4 +143,4 @@ $('form#contactForm button.submit').click(function() {
     });
     return false;
   });
-};
+});

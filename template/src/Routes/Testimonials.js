@@ -2,19 +2,21 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 
 const Testimonials = () => {
-  const data = useSelector(state => state.resumeData);
+  const data = useSelector(state => state.resumeData.data);
 
-  renderTestimonials = () => {
-    return data.testimonials.map(testimonial => {
-      return (
-        <li key={testimonial.user}>
-          <blockquote>
-            <p>{testimonial.text}</p>
-            <cite>{testimonial.user}</cite>
-          </blockquote>
-        </li>
-      );
-    })
+  const renderTestimonials = () => {
+    if (data.testimonials && data.testimonials.testimonials) {
+      return data.testimonials.testimonials.map(testimonial => {
+        return (
+          <li key={testimonial.user}>
+            <blockquote>
+              <p>{testimonial.text}</p>
+              <cite>{testimonial.user}</cite>
+            </blockquote>
+          </li>
+        );
+      })
+    }
   }
 
   return (
