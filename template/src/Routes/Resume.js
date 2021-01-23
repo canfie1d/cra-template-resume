@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+import { Route } from 'react-router-dom';
 import { Context } from '../Contexts/AppStore';
 
-const Resume = () => {
+const Resume = (props) => {
   const [state] = useContext(Context);
 
   const renderEducation = () => {
@@ -46,41 +47,46 @@ const Resume = () => {
   };
 
   return (
-    <section id='resume'>
-      <div className='row education'>
-        <div className='three columns header-col'>
-          <h1>
-            <span>Education</span>
-          </h1>
-        </div>
-        <div className='nine columns main-col'>
-          <div className='row item'>
-            <div className='twelve columns'>{renderEducation()}</div>
+    <Route
+      path={props.paths}
+      render={() => (
+        <section id='resume'>
+          <div className='row education'>
+            <div className='three columns header-col'>
+              <h1>
+                <span>Education</span>
+              </h1>
+            </div>
+            <div className='nine columns main-col'>
+              <div className='row item'>
+                <div className='twelve columns'>{renderEducation()}</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className='row work'>
-        <div className='three columns header-col'>
-          <h1>
-            <span>Work</span>
-          </h1>
-        </div>
-        <div className='nine columns main-col'>{renderWork()}</div>
-      </div>
-      <div className='row skill'>
-        <div className='three columns header-col'>
-          <h1>
-            <span>Skills</span>
-          </h1>
-        </div>
-        <div className='nine columns main-col'>
-          <p>{state.skillmessage}</p>
-          <div className='bars'>
-            <ul className='skills'>{renderSkills()}</ul>
+          <div className='row work'>
+            <div className='three columns header-col'>
+              <h1>
+                <span>Work</span>
+              </h1>
+            </div>
+            <div className='nine columns main-col'>{renderWork()}</div>
           </div>
-        </div>
-      </div>
-    </section>
+          <div className='row skill'>
+            <div className='three columns header-col'>
+              <h1>
+                <span>Skills</span>
+              </h1>
+            </div>
+            <div className='nine columns main-col'>
+              <p>{state.skillmessage}</p>
+              <div className='bars'>
+                <ul className='skills'>{renderSkills()}</ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    />
   );
 };
 

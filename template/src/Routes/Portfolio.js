@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+import { Route } from 'react-router-dom';
 import { Context } from '../Contexts/AppStore';
 
-const Portfolio = () => {
+const Portfolio = (props) => {
   const [state] = useContext(Context);
   const images = require.context('../Assets/images/portfolio/', true);
 
@@ -31,19 +32,24 @@ const Portfolio = () => {
   };
 
   return (
-    <section id='portfolio'>
-      <div className='row'>
-        <div className='twelve columns collapsed'>
-          <h1>Check Out Some of My Work.</h1>
-          <div
-            id='portfolio-wrapper'
-            className='bgrid-quarters s-bgrid-thirds cf'
-          >
-            {renderProjects()}
+    <Route
+      path={props.paths}
+      render={() => (
+        <section id='portfolio'>
+          <div className='row'>
+            <div className='twelve columns collapsed'>
+              <h1>Check Out Some of My Work.</h1>
+              <div
+                id='portfolio-wrapper'
+                className='bgrid-quarters s-bgrid-thirds cf'
+              >
+                {renderProjects()}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      )}
+    />
   );
 };
 

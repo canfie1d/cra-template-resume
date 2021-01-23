@@ -9,14 +9,24 @@ import Contact from './Routes/Contact';
 import Testimonials from './Routes/Testimonials';
 import Portfolio from './Routes/Portfolio';
 
+const paths = [
+  '',
+  '#home',
+  '#about',
+  '#resume',
+  '#portfolio',
+  '#testimonials',
+  '#contact',
+];
+
 export default (
   <React.Fragment>
     <Header />
-    <About />
-    <Resume />
-    <Portfolio />
-    <Testimonials />
-    <Contact />
-    <Footer />
+    <About paths={paths} />
+    <Resume paths={paths} />
+    <Portfolio paths={paths} />
+    <Testimonials paths={paths} />
+    <Contact paths={paths} />
+    <Footer paths={paths} />
   </React.Fragment>
 );

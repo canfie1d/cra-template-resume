@@ -32,33 +32,81 @@ const Header = () => {
           Hide navigation
         </a>
         <ul id='nav' className='nav'>
-          <li className='current'>
-            <a className='smoothscroll' href='#home'>
+          <li>
+            <NavLink
+              isActive={(match, location) => location.hash === '#home'}
+              activeStyle={{
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+              }}
+              className='smoothscroll'
+              to='#home'
+            >
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <NavLink className='smoothscroll' to='/about'>
+            <NavLink
+              isActive={(match, location) => location.hash === '#about'}
+              activeStyle={{
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+              }}
+              className='smoothscroll'
+              to='#about'
+            >
               About
             </NavLink>
           </li>
           <li>
-            <NavLink className='smoothscroll' to='/resume'>
+            <NavLink
+              isActive={(match, location) => location.hash === '#resume'}
+              activeStyle={{
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+              }}
+              className='smoothscroll'
+              to='#resume'
+            >
               Resume
             </NavLink>
           </li>
           <li>
-            <NavLink className='smoothscroll' to='/portfolio'>
+            <NavLink
+              isActive={(match, location) => location.hash === '#portfolio'}
+              activeStyle={{
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+              }}
+              className='smoothscroll'
+              to='#portfolio'
+            >
               Works
             </NavLink>
           </li>
           <li>
-            <NavLink className='smoothscroll' to='/testimonials'>
+            <NavLink
+              isActive={(match, location) => location.hash === '#testimonials'}
+              activeStyle={{
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+              }}
+              className='smoothscroll'
+              to='#testimonials'
+            >
               Testimonials
             </NavLink>
           </li>
           <li>
-            <NavLink className='smoothscroll' to='/contact'>
+            <NavLink
+              className='smoothscroll'
+              isActive={(match, location) => location.hash === '#contact'}
+              activeStyle={{
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+              }}
+              to='#contact'
+            >
               Contact
             </NavLink>
           </li>
