@@ -1,41 +1,48 @@
-import React from 'react';
-import { useSelector } from 'react-redux'
+import { useContext } from 'react';
+import { Context } from '../Contexts/AppStore';
 
 const About = () => {
-  const data = useSelector(state => state.resumeData.data);
+  const [state] = useContext(Context);
 
-  var name = (data.main && data.main.name) || '';
-  var profilepic= (data.main && `./Assets/images/${data.main.image}`) || '';
-  var bio = (data.main && data.main.bio) || '';
-  var address = (data.main && data.main.address) || {};
-  var phone= (data.main && data.main.phone) || '';
-  var email = (data.main && data.main.email) || '';
-  var resumeDownload = (data.main && data.main.resumedownload) || '';
+  var name = state.main.name ?? '';
+  var profilepic = `./Assets/images/${state.main.image}` ?? '';
+  var bio = state.main.bio ?? '';
+  var address = state.main.address ?? {};
+  var phone = state.main.phone ?? '';
+  var email = state.main.email ?? '';
+  var resumeDownload = state.main.resumedownload ?? '';
 
   return (
-    <section id="about">
-      <div className="row">
-        <div className="three columns">
-          <img className="profile-pic"  src={profilepic} alt="Profile Pic" />
+    <section id='about'>
+      <div className='row'>
+        <div className='three columns'>
+          <img className='profile-pic' src={profilepic} alt='Profile Pic' />
         </div>
-        <div className="nine columns main-col">
+        <div className='nine columns main-col'>
           <h2>About Me</h2>
           <p>{bio}</p>
-          <div className="row">
-            <div className="columns contact-details">
+          <div className='row'>
+            <div className='columns contact-details'>
               <h2>Contact Details</h2>
-              <p className="address">
-                <span>{name}</span><br />
-                <span>{address.street}<br />
+              <p className='address'>
+                <span>{name}</span>
+                <br />
+                <span>
+                  {address.street}
+                  <br />
                   {address.city} {address.state}, {address.zip}
-                </span><br />
-                <span>{phone}</span><br />
+                </span>
+                <br />
+                <span>{phone}</span>
+                <br />
                 <span>{email}</span>
               </p>
             </div>
-            <div className="columns download">
+            <div className='columns download'>
               <p>
-                <a href={resumeDownload} className="button"><i className="fa fa-download"></i>Download Resume</a>
+                <a href={resumeDownload} className='button'>
+                  <i className='fa fa-download'></i>Download Resume
+                </a>
               </p>
             </div>
           </div>
@@ -43,6 +50,6 @@ const About = () => {
       </div>
     </section>
   );
-}
+};
 
 export default About;

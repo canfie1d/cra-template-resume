@@ -7,8 +7,7 @@ You can utilize this template in create-react-app by adding the flag `--template
 example
 
 ```bash
-yarn create react-app test-app --template cra-template-resume
-```
+yarn create react-app test-app --scripts-version complete-react-scripts --template cra-template-resume``
 
 For more information, please refer to:
 
@@ -26,3 +25,4 @@ For more information, please refer to:
 
 ##### Testimonial photo credit
 <a href="https://unsplash.com/@samuelzeller?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge">Samuel Zeller</a>
+```

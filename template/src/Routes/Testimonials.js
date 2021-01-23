@@ -1,12 +1,12 @@
-import React from 'react';
-import { useSelector } from 'react-redux'
+import { useContext } from 'react';
+import { Context } from '../Contexts/AppStore';
 
 const Testimonials = () => {
-  const data = useSelector(state => state.resumeData.data);
+  const [state] = useContext(Context);
 
   const renderTestimonials = () => {
-    if (data.testimonials && data.testimonials.testimonials) {
-      return data.testimonials.testimonials.map(testimonial => {
+    if (state.testimonials) {
+      return state.testimonials.map((testimonial) => {
         return (
           <li key={testimonial.user}>
             <blockquote>
@@ -15,26 +15,26 @@ const Testimonials = () => {
             </blockquote>
           </li>
         );
-      })
+      });
     }
-  }
+  };
 
   return (
-    <section id="testimonials">
-      <div className="text-container">
-        <div className="row">
-          <div className="two columns header-col">
-            <h1><span>Client Testimonials</span></h1>
+    <section id='testimonials'>
+      <div className='text-container'>
+        <div className='row'>
+          <div className='two columns header-col'>
+            <h1>
+              <span>Client Testimonials</span>
+            </h1>
           </div>
-          <div className="ten columns flex-container">
-            <ul className="slides">
-              {renderTestimonials()}
-            </ul>
+          <div className='ten columns flex-container'>
+            <ul className='slides'>{renderTestimonials()}</ul>
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default Testimonials;
