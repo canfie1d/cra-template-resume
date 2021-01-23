@@ -3,20 +3,21 @@ import { Context } from '../Contexts/AppStore';
 
 const Portfolio = () => {
   const [state] = useContext(Context);
+  const images = require.context('../Assets/images/portfolio/', true);
 
   const renderProjects = () => {
-    return state.portfolio.projects.map((projects) => {
-      const projectImage = '../Assets/images/portfolio/' + projects.image;
+    return state.portfolio.projects.map((project) => {
+      let projectImage = images(`./${project.image}`).default;
 
       return (
-        <div key={projects.title} className='columns portfolio-item'>
+        <div key={project.title} className='columns portfolio-item'>
           <div className='item-wrap'>
-            <a href={projects.url} title={projects.title}>
-              <img alt={projects.title} src={projectImage} />
+            <a href={project.url} title={project.title}>
+              <img alt={project.title} src={projectImage} />
               <div className='overlay'>
                 <div className='portfolio-item-meta'>
-                  <h5>{projects.title}</h5>
-                  <p>{projects.category}</p>
+                  <h5>{project.title}</h5>
+                  <p>{project.category}</p>
                 </div>
               </div>
               <div className='link-icon'>

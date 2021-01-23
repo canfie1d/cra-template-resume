@@ -2,10 +2,11 @@ import { useContext } from 'react';
 import { Context } from '../Contexts/AppStore';
 
 const About = () => {
+  const images = require.context('../Assets/images/', true);
   const [state] = useContext(Context);
 
   const name = state.main.name ?? '';
-  const profilepic = `../Assets/images/${state.main.image}` ?? '';
+  const profilePic = images(`./${state.main.image}`).default;
   const bio = state.main.bio ?? '';
   const address = state.main.address ?? {};
   const phone = state.main.phone ?? '';
@@ -16,7 +17,7 @@ const About = () => {
     <section id='about'>
       <div className='row'>
         <div className='three columns'>
-          <img className='profile-pic' src={profilepic} alt='Profile Pic' />
+          <img className='profile-pic' src={profilePic} alt='Profile Pic' />
         </div>
         <div className='nine columns main-col'>
           <h2>About Me</h2>
