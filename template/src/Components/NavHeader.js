@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   const [state] = useContext(Context);
 
-  var name = state.main.name;
-  var occupation = state.main.occupation;
-  var description = state.main.description;
-  var address = state.main.address;
+  const name = state.main.name;
+  const occupation = state.main.occupation;
+  const description = state.main.description;
+  const address = state.main.address;
 
   const renderNetworks = () => {
     if (state.main.social) {

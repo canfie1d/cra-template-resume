@@ -4,13 +4,13 @@ import { Context } from '../Contexts/AppStore';
 const About = () => {
   const [state] = useContext(Context);
 
-  var name = state.main.name ?? '';
-  var profilepic = `./Assets/images/${state.main.image}` ?? '';
-  var bio = state.main.bio ?? '';
-  var address = state.main.address ?? {};
-  var phone = state.main.phone ?? '';
-  var email = state.main.email ?? '';
-  var resumeDownload = state.main.resumedownload ?? '';
+  const name = state.main.name ?? '';
+  const profilepic = `../Assets/images/${state.main.image}` ?? '';
+  const bio = state.main.bio ?? '';
+  const address = state.main.address ?? {};
+  const phone = state.main.phone ?? '';
+  const email = state.main.email ?? '';
+  const resumeDownload = state.main.resumedownload ?? '';
 
   return (
     <section id='about'>

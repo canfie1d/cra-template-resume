@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Context } from '../Contexts/AppStore';
 
 const Contact = () => {
@@ -13,7 +13,7 @@ const Contact = () => {
 
   const [inputValues, setInputValues] = useState(initialState);
 
-  var address = (state.main && state.main.address) || {
+  const address = (state.main && state.main.address) || {
     street: '',
     city: '',
     state: '',

@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { Context } from '../Contexts/AppStore';
+
 const Footer = () => {
   const [state] = useContext(Context);
   const date = new Date();

@@ -1,4 +1,4 @@
-export const testimonialsData = {
+export const testimonialData = {
   testimonials: [
     {
       text:

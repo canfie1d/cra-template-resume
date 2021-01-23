@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Context } from './Contexts/AppStore';
+import { Context } from '../Contexts/AppStore';
 
 const Resume = () => {
   const [state] = useContext(Context);
@@ -31,6 +31,7 @@ const Resume = () => {
   };
 
   const renderSkills = () => {
+    if (state.resume.skills) {
       return state.resume.skills.map((skill) => {
         const className = 'bar-expand ' + skill.name.toLowerCase();
 

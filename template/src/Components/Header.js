@@ -4,10 +4,10 @@ import { Context } from '../Contexts/AppStore';
 const Header = () => {
   const [state] = useContext(Context);
 
-  var name = state.main.name ?? '';
-  var occupation = state.main.occupation ?? '';
-  var description = state.main.description ?? '';
-  var address = state.main.address ?? { city: '' };
+  const name = state.main.name ?? '';
+  const occupation = state.main.occupation ?? '';
+  const description = state.main.description ?? '';
+  const address = state.main.address ?? { city: '' };
 
   const renderNetworks = () => {
     return state.main.social.map((network) => {

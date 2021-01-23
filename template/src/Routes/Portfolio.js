@@ -6,7 +6,7 @@ const Portfolio = () => {
 
   const renderProjects = () => {
     return state.portfolio.projects.map((projects) => {
-      var projectImage = '../Assets/images/portfolio/' + projects.image;
+      const projectImage = '../Assets/images/portfolio/' + projects.image;
 
       return (
         <div key={projects.title} className='columns portfolio-item'>
